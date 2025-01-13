@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correct Answer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cybersecurity Quiz</h1>
+        <div id="questionBox">
+            <p id="question"></p>
+            <div id="correctAnswerReveal" style="display: none;">
+                <h2>The Correct Answer is:</h2>
+                <p id="correctAnswer"></p>
+            </div>
+            
+            <button id="nextQuestionButton" style="display: none;">Generate Next Question</button>
+            <button id="showAnswerButton">Show Correct Answer</button>
+        </div>
+    </div>
+
+    <script>
+        // Get query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const question = urlParams.get('question');
+        const correctAnswer = urlParams.get('answer');
+
+        // Display the question
+        document.getElementById('question').innerText = question;
+
+        // Show the correct answer when the button is clicked
+        document.getElementById('showAnswerButton').addEventListener('click', function() {
+            document.getElementById('correctAnswer').innerText = correctAnswer;
+            document.getElementById('correctAnswerReveal').style.display = 'block';
+            document.getElementById('showAnswerButton').style.display = 'none';
+            document.getElementById('nextQuestionButton').style.display = 'block';
+        });
+
+        // Redirect to the main page to generate another question
+        document.getElementById('nextQuestionButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
